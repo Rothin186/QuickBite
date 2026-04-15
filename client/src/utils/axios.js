@@ -2,23 +2,16 @@ import axios from "axios";
 
 // Create axios instance with base URL
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000",
 });
 
 // Request interceptor — automatically add token to every request
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Get token from localStorage
     const token = localStorage.getItem("token");
-
-    // If token exists → add it to request header
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-
     return config;
   },
   (error) => {
@@ -32,7 +25,6 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    // If token expired or unauthorized → logout user
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
