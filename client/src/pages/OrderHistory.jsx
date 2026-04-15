@@ -17,7 +17,7 @@ const OrderHistory = () => {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axiosInstance.get("/orders/my-orders");
+      const { data } = await axiosInstance.get("/api/orders/my-orders");
       if (data.success) {
         setOrders(data.data);
       }

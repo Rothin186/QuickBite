@@ -24,7 +24,7 @@ const OrderTracking = () => {
 
   const fetchOrder = async () => {
     try {
-      const { data } = await axiosInstance.get(`/orders/${id}`);
+      const { data } = await axiosInstance.get(`/api/orders/${id}`);
       if (data.success) {
         setOrder(data.data);
       }
@@ -55,7 +55,7 @@ const OrderTracking = () => {
 
     setSimulating(true);
     try {
-      const { data } = await axiosInstance.put(`/orders/${id}/status`, {
+      const { data } = await axiosInstance.put(`/api/orders/${id}/status`, {
         orderStatus: nextStatus,
       });
       if (data.success) {

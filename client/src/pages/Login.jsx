@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axiosInstance.post("/auth/login", formData);
+      const { data } = await axiosInstance.post("/api/auth/login", formData);
       if (data.success) {
         dispatch(setCredentials({ user: data.data, token: data.data.token }));
         toast.success("Login successful!");
@@ -37,8 +37,8 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
-  };
+  window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center px-4">

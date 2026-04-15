@@ -41,7 +41,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const { data } = await axiosInstance.post("/auth/register", {
+      const { data } = await axiosInstance.post("/api/auth/register", {
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -59,7 +59,7 @@ const Register = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
   };
 
   return (

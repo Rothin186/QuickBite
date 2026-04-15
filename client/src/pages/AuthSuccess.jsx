@@ -26,7 +26,7 @@ const AuthSuccess = () => {
         localStorage.setItem("token", token);
 
         // Get user data using the token
-        const { data } = await axiosInstance.get("/auth/me");
+        const { data } = await axiosInstance.get("/api/auth/me");
 
         if (data.success) {
           // Save user and token in Redux

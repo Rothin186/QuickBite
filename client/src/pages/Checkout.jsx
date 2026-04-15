@@ -57,7 +57,7 @@ const Checkout = () => {
         paymentMethod: "Razorpay",
       };
 
-      const { data: orderRes } = await axiosInstance.post("/orders", orderData);
+      const { data: orderRes } = await axiosInstance.post("/api/orders", orderData);
 
       if (!orderRes.success) {
         toast.error("Failed to create order!");
@@ -68,7 +68,7 @@ const Checkout = () => {
 
       // Step 2 — Create Razorpay payment order
       const { data: paymentRes } = await axiosInstance.post(
-        "/payment/create-order",
+        "/api/payment/create-order",
         { orderId }
       );
 
@@ -114,7 +114,7 @@ const Checkout = () => {
           try {
             // Step 4 — Verify payment
             const { data: verifyRes } = await axiosInstance.post(
-              "/payment/verify",
+              "/api/payment/verify",
               {
                 razorpayOrderId: response.razorpay_order_id,
                 razorpayPaymentId: response.razorpay_payment_id,

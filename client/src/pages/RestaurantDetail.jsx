@@ -27,8 +27,8 @@ const RestaurantDetail = () => {
   const fetchRestaurantDetails = async () => {
     try {
       const [restaurantRes, menuRes] = await Promise.all([
-        axiosInstance.get(`/restaurants/${id}`),
-        axiosInstance.get(`/menu/${id}`),
+        axiosInstance.get(`/api/restaurants/${id}`),
+        axiosInstance.get(`/api/menu/${id}`),
       ]);
 
       if (restaurantRes.data.success) {

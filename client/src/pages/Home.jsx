@@ -34,7 +34,7 @@ const Home = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const { data } = await axiosInstance.get("/restaurants");
+      const { data } = await axiosInstance.get("/api/restaurants");
       if (data.success) {
         setRestaurants(data.data);
         setFilteredRestaurants(data.data);
