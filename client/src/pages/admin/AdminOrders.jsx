@@ -26,7 +26,7 @@ const AdminOrders = () => {
 
   const fetchOrders = async () => {
     try {
-      const { data } = await axiosInstance.get("/orders");
+      const { data } = await axiosInstance.get("/api/orders");
       if (data.success) setOrders(data.data);
     } catch (error) {
       toast.error("Failed to load orders!");
@@ -38,7 +38,7 @@ const AdminOrders = () => {
   const handleStatusUpdate = async (orderId, newStatus) => {
     setUpdatingId(orderId);
     try {
-      const { data } = await axiosInstance.put(`/orders/${orderId}/status`, {
+      const { data } = await axiosInstance.put(`/api/orders/${orderId}/status`, {
         orderStatus: newStatus,
       });
       if (data.success) {

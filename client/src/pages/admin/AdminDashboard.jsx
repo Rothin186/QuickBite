@@ -34,8 +34,8 @@ const AdminDashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const [restaurantsRes, ordersRes] = await Promise.all([
-        axiosInstance.get("/restaurants"),
-        axiosInstance.get("/orders"),
+        axiosInstance.get("/api/restaurants"),
+        axiosInstance.get("/api/orders"),
       ]);
 
       const restaurants = restaurantsRes.data.data || [];

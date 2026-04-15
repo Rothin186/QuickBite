@@ -107,12 +107,12 @@ const AdminMenuItems = () => {
 
       let data;
       if (editingItem) {
-        const res = await axiosInstance.put(`/menu/${editingItem._id}`, form, {
+        const res = await axiosInstance.put(`/api/menu/${editingItem._id}`, form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         data = res.data;
       } else {
-        const res = await axiosInstance.post("/menu", form, {
+        const res = await axiosInstance.post("/api/menu", form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         data = res.data;

@@ -125,13 +125,13 @@ const AdminRestaurants = () => {
       let data;
       if (editingRestaurant) {
         const res = await axiosInstance.put(
-          `/restaurants/${editingRestaurant._id}`,
+          `/api/restaurants/${editingRestaurant._id}`,
           form,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
         data = res.data;
       } else {
-        const res = await axiosInstance.post("/restaurants", form, {
+        const res = await axiosInstance.post("/api/restaurants", form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         data = res.data;
