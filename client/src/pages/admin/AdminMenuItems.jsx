@@ -33,8 +33,8 @@ const AdminMenuItems = () => {
   const fetchData = async () => {
     try {
       const [restaurantRes, menuRes] = await Promise.all([
-        axiosInstance.get(`/restaurants/${restaurantId}`),
-        axiosInstance.get(`/menu/${restaurantId}`),
+        axiosInstance.get(`/api/restaurants/${restaurantId}`),
+        axiosInstance.get(`/api/menu/${restaurantId}`),
       ]);
       if (restaurantRes.data.success) setRestaurant(restaurantRes.data.data);
       if (menuRes.data.success) setMenuItems(menuRes.data.data);
@@ -68,7 +68,7 @@ const AdminMenuItems = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this item?")) return;
     try {
-      const { data } = await axiosInstance.delete(`/menu/${id}`);
+      const { data } = await axiosInstance.delete(`/api/menu/${id}`);
       if (data.success) {
         toast.success("Menu item deleted!");
         fetchData();
@@ -80,7 +80,7 @@ const AdminMenuItems = () => {
 
   const handleToggleAvailability = async (id) => {
     try {
-      const { data } = await axiosInstance.put(`/menu/${id}/toggle-availability`);
+      const { data } = await axiosInstance.put(`/api/menu/${id}/toggle-availability`);
       if (data.success) {
         toast.success(data.message);
         fetchData();
