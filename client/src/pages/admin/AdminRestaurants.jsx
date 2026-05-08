@@ -34,7 +34,7 @@ const AdminRestaurants = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const { data } = await axiosInstance.get("/restaurants");
+      const { data } = await axiosInstance.get("/api/restaurants");
       if (data.success) setRestaurants(data.data);
     } catch (error) {
       toast.error("Failed to load restaurants!");
@@ -70,7 +70,7 @@ const AdminRestaurants = () => {
     if (!window.confirm("Are you sure you want to delete this restaurant?"))
       return;
     try {
-      const { data } = await axiosInstance.delete(`/restaurants/${id}`);
+      const { data } = await axiosInstance.delete(`/api/restaurants/${id}`);
       if (data.success) {
         toast.success("Restaurant deleted!");
         fetchRestaurants();
@@ -83,7 +83,7 @@ const AdminRestaurants = () => {
   const handleToggleStatus = async (id) => {
     try {
       const { data } = await axiosInstance.put(
-        `/restaurants/${id}/toggle-status`
+        `/api/restaurants/${id}/toggle-status`
       );
       if (data.success) {
         toast.success(data.message);
